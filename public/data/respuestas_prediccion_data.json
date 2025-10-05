@@ -1,0 +1,100 @@
+{
+    "period_days": {
+        "personaje": "👩‍🚀 Amanda",
+        "explicacion": [
+            "El periodo nos dice cuánto tarda el exoplaneta en dar una vuelta completa alrededor de su estrella.",
+            "Si ese ciclo se repite con precisión, es una fuerte señal de un exoplaneta real."
+        ]
+    },
+    "duration_hours": {
+        "personaje": "👦 Mateo",
+        "explicacion": [
+            "Es como ver cuánto tarda la sombra en cruzar la luz. ",
+            "Si siempre dura lo mismo, ¡seguro es un exoplaneta que pasa frente a la estrella!"
+        ]
+    },
+    "depth_ppm": {
+        "personaje": "👵 Doña Estela",
+        "explicacion": [
+            "Hasta la más pequeña sombra en la luz de una estrella puede esconder un mundo nuevo. ",
+            "Esa pequeña disminución es la huella del tránsito."
+        ]
+    },
+    "planet_radius_re": {
+        "personaje": "👩‍🚀 Amanda",
+        "explicacion": [
+            "El radio planetario se calcula con la luz bloqueada en el tránsito. ",
+            "Así podemos diferenciar entre planetas rocosos como la Tierra y gigantes como Júpiter."
+        ]
+    },
+    "snr": {
+        "personaje": "👦 Mateo",
+        "explicacion": [
+            "Es como subir el volumen de la tele: si la señal es fuerte, se escucha clarito. ",
+            "Eso significa que el exoplaneta es más confiable."
+        ]
+    },
+    "impact": {
+        "personaje": "👵 Doña Estela",
+        "explicacion": [
+            "La claridad surge cuando el camino es directo y sin desvíos. ",
+            "Un tránsito central nos da más certeza de que es un exoplaneta."
+        ]
+    },
+    "stellar_teff_k": {
+        "personaje": "👩‍🚀 Amanda",
+        "explicacion": [
+            "La temperatura de la estrella afecta la claridad de la señal. ",
+            "Las más calientes brillan tanto que el tránsito puede ser difícil de detectar."
+        ]
+    },
+    "stellar_logg_cgs": {
+        "personaje": "👵 Doña Estela",
+        "explicacion": [
+            "La grandeza a veces engaña: las estrellas gigantes confunden con señales falsas, ",
+            "mientras que las enanas nos hablan con más claridad."
+        ]
+    },
+    "stellar_radius_rsun": {
+        "personaje": "👦 Mateo",
+        "explicacion": [
+            "Si la estrella es enorme, ¡el exoplaneta tarda más en cruzarla! ",
+            "Eso nos ayuda a comprobar si los datos tienen sentido."
+        ]
+    },
+    "mag": {
+        "personaje": "👩‍🚀 Amanda",
+        "explicacion": [
+            "La magnitud mide qué tan brillante se ve la estrella desde la Tierra. ",
+            "Las más brillantes nos dan señales más limpias y confiables."
+        ]
+    },
+    "fp_nt": {
+        "personaje": "👦 Mateo",
+        "explicacion": [
+            "¡A veces no es un exoplaneta, solo ruido o una variación de la estrella! ",
+            "Este indicador nos lo advierte."
+        ]
+    },
+    "fp_ss": {
+        "personaje": "👵 Doña Estela",
+        "explicacion": [
+            "Entre luces que se eclipsan, la ilusión de un planeta puede desvanecerse. ",
+            "Este marcador señala un posible eclipse estelar."
+        ]
+    },
+    "fp_co": {
+        "personaje": "👩‍🚀 Amanda",
+        "explicacion": [
+            "Este indicador nos advierte que la señal proviene de otra estrella cercana, ",
+            "no de la que estábamos observando. Es contaminación del campo visual."
+        ]
+    },
+    "fp_ec": {
+        "personaje": "👵 Doña Estela",
+        "explicacion": [
+            "Cuando las voces del cielo se superponen, el mensaje se vuelve incierto. ",
+            "Este indicador señala coincidencias que pueden confundir."
+        ]
+    }
+}

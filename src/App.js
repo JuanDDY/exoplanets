@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+import Modelo from "./components/modelo/modelo";
+import PredictionComponent from './components/Prediction/PredictionComponent';
+//import RetrainComponent from './components/Retrain/RetrainComponent';
+import GrupoDescripcion from "./components/nosotros/Grupo_descripcion";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/educacion" element={<Modelo />} />
+            <Route path="/prediccion" element={<PredictionComponent />} />
+            <Route path="/descripcion" element={<GrupoDescripcion />} />
+            <Route path="*" element={<Home />} /> {/* 404 -> Home */}
+          </Routes>
+        </BrowserRouter>
+      
     </div>
   );
 }
