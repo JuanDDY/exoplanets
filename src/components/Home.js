@@ -3,42 +3,27 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 
 function Home() {
-  const [isMarteModalOpen, setIsMarteModalOpen] = useState(false);
-  const [isLunaModalOpen, setIsLunaModalOpen] = useState(false);
-  const [marteTab, setMarteTab] = useState(0);
-  const [lunaTab, setLunaTab] = useState(0);
   const [showOverlay, setShowOverlay] = useState(false);
-
-  const handleNextMarteTab = () => setMarteTab((t) => (t + 1) % 2);
-  const handleNextLunaTab = () => setLunaTab((t) => (t + 1) % 2);
-
-  const closeModal = () => {
-    setIsMarteModalOpen(false);
-    setIsLunaModalOpen(false);
-    setMarteTab(0);
-    setLunaTab(0);
-  };
+  const [activeTab, setActiveTab] = useState("prediccion");
 
   // Cerrar con tecla Escape
   useEffect(() => {
     const onEsc = (e) => {
       if (e.key === "Escape") {
         setShowOverlay(false);
-        closeModal();
       }
     };
     window.addEventListener("keydown", onEsc);
     return () => window.removeEventListener("keydown", onEsc);
   }, []);
 
-  // Bloquear scroll del body cuando haya overlay o modales abiertos
+  // Bloquear scroll del body cuando haya overlay abierto
   useEffect(() => {
-    const open = isMarteModalOpen || isLunaModalOpen || showOverlay;
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = showOverlay ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isMarteModalOpen, isLunaModalOpen, showOverlay]);
+  }, [showOverlay]);
 
   // Pre-carga de imágenes para evitar parpadeos
   useEffect(() => {
@@ -60,48 +45,20 @@ function Home() {
 
       {/* Título principal */}
       <div className="titulo-container" length={1}>
-        <h1 className="home-title">Explora y detecta sismos en otros mundos</h1>
+        <h1  className="home-title">Descubre mas allá de nuestro sistema solar</h1>
       </div>
 
       {/* Imágenes centrales */}
       <div className="centro-imagen">
         <img
-          src={process.env.PUBLIC_URL + "/imagesHome/marte_home2.png"}
+          src={process.env.PUBLIC_URL + "/imagesHome/exoplaneta1.png"}
           alt="Marte"
           className="marte-img"
-          role="button"
-          tabIndex={0}
-          onClick={() => {
-            setIsMarteModalOpen(true);
-            setMarteTab(0);
-            setIsLunaModalOpen(false);
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              setIsMarteModalOpen(true);
-              setMarteTab(0);
-              setIsLunaModalOpen(false);
-            }
-          }}
         />
         <img
-          src={process.env.PUBLIC_URL + "/imagesHome/luna_home2.png"}
+          src={process.env.PUBLIC_URL + "/imagesHome/exoplaneta2.png"}
           alt="Luna"
           className="luna-img"
-          role="button"
-          tabIndex={0}
-          onClick={() => {
-            setIsLunaModalOpen(true);
-            setLunaTab(0);
-            setIsMarteModalOpen(false);
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              setIsLunaModalOpen(true);
-              setLunaTab(0);
-              setIsMarteModalOpen(false);
-            }
-          }}
         />
         <div className="astronauta-wrap">
           <img
@@ -129,137 +86,85 @@ function Home() {
         <Link to="/descripcion" className="exo-analytics-link">Exo Analytics</Link>
       </div>
 
-      {/* Modal de Marte */}
-      {isMarteModalOpen && (
-        <div
-          className="modal-overlay"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="marte-title"
-          onClick={closeModal}
-        >
-          <div className="modal-content space-modal" onClick={(e) => e.stopPropagation()}>
-            <h2 id="marte-title" className="modal-title">Explora Marte</h2>
-            {marteTab === 0 && (
-              <div>
-                <p>Datos Curiosos:</p>
-                <ul>
-                  <li>Un día en Marte dura 24.6 horas.</li>
-                  <li>Marte tiene las montañas más altas del sistema solar.</li>
-                </ul>
-              </div>
-            )}
-            {marteTab === 1 && (
-              <div>
-                <p>¿Sabías que?</p>
-                <ul>
-                  <li>Los sismos en Marte son conocidos como "martemotos".</li>
-                  <li>La atmósfera de Marte es 100 veces más delgada que la de la Tierra.</li>
-                </ul>
-              </div>
-            )}
-            <button onClick={handleNextMarteTab} className="space-button-secondary" aria-label="Siguiente">
-              →
-            </button>
-            <button onClick={closeModal} className="space-button" aria-label="Cerrar">
-              Cerrar
-            </button>
-          </div>
-        </div>
-      )}
 
-      {/* Modal de la Luna */}
-      {isLunaModalOpen && (
-        <div
-          className="modal-overlay"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="luna-title"
-          onClick={closeModal}
-        >
-          <div className="modal-content space-modal" onClick={(e) => e.stopPropagation()}>
-            <h2 id="luna-title" className="modal-title">Explora la Luna</h2>
-            {lunaTab === 0 && (
-              <div>
-                <p>Datos Curiosos:</p>
-                <ul>
-                  <li>La Luna siempre muestra la misma cara a la Tierra.</li>
-                  <li>Un día lunar dura aproximadamente 29 días terrestres.</li>
-                </ul>
-              </div>
-            )}
-            {lunaTab === 1 && (
-              <div>
-                <p>¿Sabías que?</p>
-                <ul>
-                  <li>Los sismos lunares son mucho más débiles que los de la Tierra.</li>
-                  <li>La Luna no tiene atmósfera, por lo que no hay clima.</li>
-                </ul>
-              </div>
-            )}
-            <button onClick={handleNextLunaTab} className="space-button-secondary" aria-label="Siguiente">
-              →
-            </button>
-            <button onClick={closeModal} className="space-button" aria-label="Cerrar">
-              Cerrar
-            </button>
-          </div>
-        </div>
-      )}
+          {/* Overlay que aparece al hacer clic en "Empezar misión" */}
+          {showOverlay && (
+            <div
+              className={`overlay-container show`}
+              role="dialog"
+              aria-modal="true"
+              onClick={(e) => {
+                // cerrar solo si se hace click en el fondo (no en el contenido)
+                if (e.currentTarget === e.target) setShowOverlay(false);
+              }}
+            >
+              <div className="misiones-container space-modal" onClick={(e) => e.stopPropagation()}>
+                <h2 className="modal-title">Explora la detección de exoplanetas</h2>
+                <p className="modal-description">
+                  Elige tu aventura en el fascinante mundo de la detección de exoplanetas.
+                </p>
 
-      {/* Overlay que aparece al hacer clic en "Empezar misión" */}
-      {showOverlay && (
-        <div
-          className={`overlay-container show`}
-          role="dialog"
-          aria-modal="true"
-          onClick={(e) => {
-            // cerrar solo si se hace click en el fondo (no en el contenido)
-            if (e.currentTarget === e.target) setShowOverlay(false);
-          }}
-        >
-          <div className="misiones-container space-modal" onClick={(e) => e.stopPropagation()}>
-            <h2 className="modal-title">Bienvenido a la detección de sismos</h2>
-            <p className="modal-description">
-              Aquí encontrarás los elementos necesarios para saber todo sobre los sismos en Marte y la Luna.
-            </p>
-            <div className="botones-mision">
-              <div className="boton-wrapper">
-                <Link to="/mision1" className="boton-mision1 space-button-secondary">
-                  Misión 1
-                </Link>
-                <div className="mission-info">
-                  <p>Señales con ruido y ondas filtradas para los sismos</p>
+                {/* Pestañas */}
+                <div className="tabs-container mb-4">
+                  <button
+                    className={`tab-button ${activeTab === "prediccion" ? "active" : ""}`}
+                    onClick={() => setActiveTab("prediccion")}
+                  >
+                    Predicción
+                  </button>
+                  <button
+                    className={`tab-button ${activeTab === "educacion" ? "active" : ""}`}
+                    onClick={() => setActiveTab("educacion")}
+                  >
+                    Educación
+                  </button>
                 </div>
-              </div>
 
-              <div className="boton-wrapper">
-                <Link to="/mision2" className="boton-mision2 space-button-secondary">
-                  Misión 2
-                </Link>
-                <div className="mission-info">
-                  <p>Ondas aleatorias para que el usuario intente detectar si es un sismo</p>
-                </div>
-              </div>
+                {/* Contenido de las pestañas */}
+                {activeTab === "prediccion" && (
+                  <div className="tab-content">
+                    <h3 className="tab-title">Pestaña Predicción</h3>
+                    <p className="tab-description">
+                      Explora cómo el modelo predice si un candidato es un exoplaneta real. 
+                      Ingresa los datos observados y descubre la predicción con información sobre cada variable, 
+                      respaldada en ciencia y señales confiables.
+                    </p>
+                    <Link 
+                      to="/prediction" 
+                      className="space-button tab-action-button"
+                      onClick={() => setShowOverlay(false)}
+                    >
+                      Ir a Predicción
+                    </Link>
+                  </div>
+                )}
 
-              <div className="boton-wrapper">
-                <Link to="/modelo" className="boton-modelo space-button">
-                  Modelo
-                </Link>
-                <div className="mission-info">
-                  <p>Explora el modelo de detección.</p>
+                {activeTab === "educacion" && (
+                  <div className="tab-content">
+                    <h3 className="tab-title">Pestaña Educación</h3>
+                    <p className="tab-description">
+                      Aprende sobre exoplanetas, cómo se descubren y qué significan las variables del modelo. 
+                      Amanda, Mateo y Doña Estela te guían con explicaciones claras, curiosidades y metáforas 
+                      para entender el universo de manera divertida y sencilla.
+                    </p>
+                    <Link 
+                      to="/modelo" 
+                      className="space-button tab-action-button"
+                      onClick={() => setShowOverlay(false)}
+                    >
+                      Ir a Educación
+                    </Link>
+                  </div>
+                )}
+
+                <div style={{ marginTop: 24 }}>
+                  <button className="space-button" onClick={() => setShowOverlay(false)} aria-label="Cerrar">
+                    Cerrar
+                  </button>
                 </div>
               </div>
             </div>
-
-            <div style={{ marginTop: 24 }}>
-              <button className="space-button" onClick={() => setShowOverlay(false)} aria-label="Cerrar">
-                Cerrar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+          )}
     </div>
   );
 }

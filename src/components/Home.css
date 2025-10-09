@@ -1,16 +1,18 @@
 :root {
   /* Variables de posición y tamaño para las imágenes */
-  --marte-left: 5%; /* Posición horizontal de Marte */
+  --marte-left: 15%; /* Posición horizontal de Marte */
   --marte-bottom:0%; /* Posición vertical de Marte */
-  --marte-size: 45%; /* Tamaño de Marte */
+  --marte-size: 35%; /* Tamaño de Marte */
 
-  --luna-left: 40%; /* Posición horizontal de la Luna */
-  --luna-bottom: 12%; /* Posición vertical de la Luna */
-  --luna-size: 30%; /* Tamaño de la Luna */
 
-  --astronauta-right: 5%; /* Posición horizontal del Astronauta */
-  --astronauta-bottom: 10%; /* Posición vertical del Astronauta */
-  --astronauta-size: 45%; /* Tamaño del Astronauta */
+  --luna-left: 42%; /* Posición horizontal de la Luna */
+  --luna-bottom: 10%; /* Posición vertical de la Luna */
+  --luna-size: 25%; /* Tamaño de la Luna */
+
+  --astronauta-right: 10%; /* Posición horizontal del Astronauta */
+  --astronauta-bottom: 0%; /* Posición vertical del Astronauta */
+  --astronauta-size: 40%; /* Tamaño del Astronauta */
+
 
   /* Variables para la posición y tamaño del botón */
   --boton-bottom: 7%; /* Posición vertical del botón */
@@ -542,13 +544,97 @@
   }
 }
 
+/* Estilos para las pestañas del modal */
+.tabs-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.tab-button {
+  background: rgba(15, 23, 42, 0.8);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.tab-button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.tab-button.active {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border-color: #3b82f6;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+}
+
+.tab-content {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.tab-title {
+  color: #3b82f6;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+.tab-description {
+  color: #e2e8f0;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.tab-action-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-action-button:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
 /* Para que se vea bien en pantallas más pequeñas */
 @media (max-width: 768px) {
   .titulo-container h1 {
     font-size: 24px;
   }
   .astronauta-img {
-    width: 50%;
+    width: 35%;
     top: 0;
   }
 
@@ -559,5 +645,23 @@
 
   .seisminds-text {
     font-size: 24px;
+  }
+
+  .tabs-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tab-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .tab-title {
+    font-size: 18px;
+  }
+
+  .tab-description {
+    font-size: 14px;
   }
 }
